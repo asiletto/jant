@@ -50,7 +50,6 @@ public class Board extends JPanel implements ActionListener {
             Graphics2D g2d = (Graphics2D)g;
             for (GameEntity entity : entities) {
 				g2d.drawImage(entity.getImageRotated(), entity.getXpos(), entity.getYpos(), this);
-				System.out.println("a="+entity.getAngle()+" x="+entity.getXpos()+" y="+entity.getYpos());
             }
 
             g2d.setColor(Color.LIGHT_GRAY);

@@ -12,9 +12,9 @@ public class Game extends JFrame {
         add(new Board());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(G_WIDTH, G_HEIGHT);
+        setSize(G_WIDTH+20, G_HEIGHT+20);
         setLocationRelativeTo(null);
-        setTitle("Test game");
+        setTitle("JAnt");
         setResizable(false);
         setVisible(true);
     }

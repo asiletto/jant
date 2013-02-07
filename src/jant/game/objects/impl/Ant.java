@@ -15,12 +15,16 @@ public class Ant extends GameEntity{
 	int strafeSpeed = 0;
 	int angleSpeed = 15;
 	int fullAngle = 360;
+	int maxImageLen;
 	
 	public Ant() {
 		this.image = new ImageIcon(this.getClass().getResource("ant-worker.png")).getImage();
 		this.angle = rand.nextInt(fullAngle);
 		this.xpos = rand.nextInt(Game.G_HEIGHT);
 		this.ypos = rand.nextInt(Game.G_WIDTH);
+		int w = image.getWidth(null);
+		int h = image.getHeight(null);
+		this.maxImageLen = w>h?w:h;
 	}
 	
 	@Override
@@ -40,15 +44,15 @@ public class Ant extends GameEntity{
 		else
 			angle -= angleSpeed;
 
-		if(xpos>Game.G_HEIGHT-image.getHeight(null))
-			xpos = Game.G_HEIGHT-image.getHeight(null);
-		if(xpos<0)
-			xpos = 0;
-
-		if(ypos>Game.G_WIDTH-image.getWidth(null))
-			ypos = Game.G_WIDTH-image.getWidth(null);
+		if(ypos+maxImageLen>Game.G_HEIGHT)
+			ypos = Game.G_HEIGHT-maxImageLen;
 		if(ypos<0)
 			ypos = 0;
+
+		if(xpos>Game.G_WIDTH)
+			xpos = Game.G_WIDTH;
+		if(xpos<0)
+			xpos = 0;
 
 		if(angle>fullAngle)
 			angle = 0;
