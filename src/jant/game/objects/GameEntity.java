@@ -1,7 +1,7 @@
 package jant.game.objects;
 
 
-import jant.game.Game;
+import jant.game.Board;
 import jant.game.Utils;
 
 import java.awt.Image;
@@ -12,6 +12,11 @@ import java.security.SecureRandom;
  * @author Alessandro
  */
 public abstract class GameEntity {
+	protected Board board;
+	
+	public GameEntity(Board board) {
+		this.board = board;
+	}
 	
 	protected SecureRandom rand = new SecureRandom();
 	public static final int ANGLE_360 = 360;
@@ -26,34 +31,6 @@ public abstract class GameEntity {
 	protected int maxImageLen;
 
 	public abstract void loop();
-	
-	public void randomMove() {
-		double dx = Math.sin(Math.toRadians(angle)) * forwardSpeed;
-		double dy = -Math.cos(Math.toRadians(angle)) *  forwardSpeed;
-		
-		xpos += dx;
-		ypos += dy;
-
-		if(rand.nextBoolean())
-			angle += angleSpeed;
-		else
-			angle -= angleSpeed;
-
-		if(ypos+maxImageLen>Game.G_HEIGHT)
-			ypos = Game.G_HEIGHT-maxImageLen;
-		if(ypos<0)
-			ypos = 0;
-
-		if(xpos>Game.G_WIDTH)
-			xpos = Game.G_WIDTH;
-		if(xpos<0)
-			xpos = 0;
-
-		if(angle>ANGLE_360)
-			angle = 0;
-		if(angle<0)
-			angle = ANGLE_360;
-	}
 	
 	public int getAngle() {
 		return angle;
