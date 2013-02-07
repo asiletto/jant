@@ -26,7 +26,7 @@ public class Board extends JPanel implements ActionListener {
 
     	entities = new ArrayList<GameEntity>();
 
-    	addRandomAnts(5);
+    	addRandomAnts(25);
     	
         setFocusable(true);
         setBackground(Color.WHITE);
