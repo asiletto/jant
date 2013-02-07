@@ -61,7 +61,7 @@ public class Board extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
         for (GameEntity entity : entities) {
-        	entity.move();
+        	entity.loop();
         }
 		repaint();
 	}

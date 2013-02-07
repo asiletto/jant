@@ -25,9 +25,9 @@ public abstract class GameEntity {
 	protected int angleSpeed;
 	protected int maxImageLen;
 
-	public abstract void move();
+	public abstract void loop();
 	
-	public void moveForward() {
+	public void randomMove() {
 		double dx = Math.sin(Math.toRadians(angle)) * forwardSpeed;
 		double dy = -Math.cos(Math.toRadians(angle)) *  forwardSpeed;
 		
