@@ -2,6 +2,7 @@ package jant.game;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class Game extends JFrame {
 	
     public static final int G_HEIGHT = 500;

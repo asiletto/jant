@@ -16,6 +16,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class Board extends JPanel implements ActionListener {
 
 	private Timer timer;
