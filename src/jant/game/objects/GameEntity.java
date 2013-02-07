@@ -4,9 +4,16 @@ package jant.game.objects;
 import jant.game.Utils;
 
 import java.awt.Image;
+import java.security.SecureRandom;
 
-
+/**
+ * representing a general entity on the board
+ * @author Alessandro
+ */
 public abstract class GameEntity {
+	
+	protected SecureRandom rand = new SecureRandom();
+	public static final int ANGLE_360 = 360;
 	
 	protected int xpos;
 	protected int ypos;	

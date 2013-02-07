@@ -3,23 +3,17 @@ package jant.game.objects.impl;
 import jant.game.Game;
 import jant.game.objects.GameEntity;
 
-import java.security.SecureRandom;
-
-
 import javax.swing.ImageIcon;
 
 public class Ant extends GameEntity{
 
-	protected SecureRandom rand = new SecureRandom();
 	int forwardSpeed = 5;
-	int strafeSpeed = 0;
 	int angleSpeed = 15;
-	int fullAngle = 360;
 	int maxImageLen;
 	
 	public Ant() {
 		this.image = new ImageIcon(this.getClass().getResource("ant-worker.png")).getImage();
-		this.angle = rand.nextInt(fullAngle);
+		this.angle = rand.nextInt(ANGLE_360);
 		this.xpos = rand.nextInt(Game.G_HEIGHT);
 		this.ypos = rand.nextInt(Game.G_WIDTH);
 		int w = image.getWidth(null);
@@ -33,11 +27,11 @@ public class Ant extends GameEntity{
 	}
 
 	public void moveForward() {
-		double dy = Math.cos(Math.toRadians(angle)) *  forwardSpeed + Math.sin(Math.toRadians(angle)) * strafeSpeed;
-		double dx = -Math.cos(Math.toRadians(angle)) * strafeSpeed + Math.sin(Math.toRadians(angle)) * forwardSpeed;
+		double dx = Math.sin(Math.toRadians(angle)) * forwardSpeed;
+		double dy = -Math.cos(Math.toRadians(angle)) *  forwardSpeed;
 		
 		xpos += dx;
-		ypos -= dy;
+		ypos += dy;
 
 		if(rand.nextBoolean())
 			angle += angleSpeed;
@@ -54,9 +48,9 @@ public class Ant extends GameEntity{
 		if(xpos<0)
 			xpos = 0;
 
-		if(angle>fullAngle)
+		if(angle>ANGLE_360)
 			angle = 0;
 		if(angle<0)
-			angle = fullAngle;
+			angle = ANGLE_360;
 	}
 }
